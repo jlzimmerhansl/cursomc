@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.jessica.mc.domain.Categoria;
+import com.jessica.mc.dto.CategoriaDTO;
 import com.jessica.mc.repositories.CategoriaRepository;
 import com.jessica.mc.services.exceptions.ObjectNotFoundException;
 
@@ -56,6 +57,10 @@ public class CategoriaService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
 		return repo.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(),objDTO.getNome());
 	}
 
 }
